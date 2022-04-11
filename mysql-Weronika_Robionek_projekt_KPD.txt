@@ -1,0 +1,28 @@
+create database projekt;
+
+use projekt;
+
+create table dane_osobowe (id int not null auto_increment primary key,imie varchar(25) not null,nazwisko varchar(30) not null,data_urodzenia date,restauracja varchar(20),id_stan_etat varchar(10),dzial varchar(10),data_zatrudnienia date, specjalizacja varchar(10));
+
+insert into dane_osobowe (imie,nazwisko,data_urodzenia,restauracja,id_stan_etat,dzial,data_zatrudnienia,specjalizacja) values ('Anna','Kowal','1992-02-06','R00001','m12','O','2017-05-04','ND'),('Maria','Luczak','1968-04-15','R00001','pr12','J','2021-06-23','LK'),('Piotr','Wilk','1978-01-28','R00001','m11','R','2019-08-23','ND'),('Agnieszka','Witek','1995-05-25','R00001','i12','T','2017-07-14','WZ'),('Halina','Janczak','1972-12-05','R00001','lg11','O','2020-06-10','LG'),('Karolina','Jablonska','2001-11-06','R00001','i12','J','2019-06-20','ND'),('Marcin','Kruk','1979-09-26','R00001','pr12','T','2017-07-11','S'),('Robert','Tomaszewski','2000-02-07','R00001','pr12','T','2019-02-01','S'),('Pawel','Trocki','1976-03-17','R00001','m11','O','2020-03-25','K'),('Justyna','Kania','1998-12-09','R00001','m11','R','2019-06-26','F'),('Lukasz','Zawada','1997-12-12','R00001','lg11','J','2020-03-19','LG'),('Marta','Lis','2002-07-26','R00001','mp11','P','2019-09-18','ND'),('Tomasz','Wrzosek','2001-06-27','R00001','pr14','O','2018-10-20','F'),('Daria','Bialy','1986-09-23','R00001','pr14','R','2020-08-19','WZ'),('Krzysztof','Osinski','2001-06-24','R00001','i12','T','2018-11-22','LK');
+
+create table restauracje (nr_identyfikacyjny varchar(15) primary key,rok_powstania year,miasto varchar(50),liczba_pracownikow int,kierownik varchar(100));
+
+insert into restauracje (nr_identyfikacyjny,rok_powstania,miasto,liczba_pracownikow,kierownik) values ('R00001','1992','Warszawa',52,'Magdalena Walaszek'),('R00002','1993','Warszawa',63,'Monika Wisniewska'),('R00003','1995','Gdansk',75,'Laura Paszkowska'),('R00004','1996','Katowice',26,'Pawel Klimek'),('R00005','1996','Krakow',43,'Tatiana Rylska'),('R00006','1997','Kielce',38,'Marian Bak'),('R00007','1998','Gdansk',44,'Karol Szymanski'),('R00008','2000','Sopot',67,'Patryk Jablonski'),('R00009','2000','Walbrzych',34,'Martyna Kwasniewska'),('R00010','2001','Lodz',54,'Aleksandra Cis'),('R00011','2001','Krakow',69,'Wiktoria Bialy'),('R00012','2002','Plock',32,'Konrad Wach'),('R00013','2003','Lomza',5,'Tomasz Halny'),('R00014','2004','Kalisz',29,'Paulina Czarnecka'),('R00015','2004','Pultusk',24,'Katarzyna Piotrowska');
+
+create table szkolenia_ze_specjalizacji (id_specjalizacji varchar(10) not null primary key,typ_specjalizacji varchar(50),instruktor varchar(100),czas_trwania_godz int);
+
+insert into szkolenia_ze_specjalizacji (id_specjalizacji,typ_specjalizacji,instruktor,czas_trwania_godz) values ('ND','napoje i desery','Karolina Jablonska',16),('LK','lada kasowa','Krzysztof Osinski',16), ('K','kanapki','Karolina Jablonska',36),('LG','lider goscinnosci','Krzysztof Osinski',48),('S','sala','Krzysztof Osinski',8),('F','frytki','Agnieszka Witek',12),('WZ','wydawanie zamowien','Agnieszka Witek',12);
+
+create table dzialy (ozn_dzialu varchar(10) primary key,nazwa varchar(30),kierownik_dzialu varchar(100),liczba_pracownikow int);
+
+insert into dzialy (ozn_dzialu,nazwa,kierownik_dzialu,liczba_pracownikow) values ('J','ds.jakosci','Karolina Sroka',13),('O','ds. obslugi','Anna Kowal',12),('R','ds. rozwoju','Piotr Wilk',10),('T','ds. technologii','Lucja Okrasa',14),('P','ds. personalnych','Marta Lis',3);
+
+create table place (stan_etat varchar(15) not null primary key,stanowisko varchar(50),etat varchar(15),placa_brutto decimal(10,2));
+
+insert into place (stan_etat,stanowisko,etat,placa_brutto) values ('m14','manager','1/4',1080),('m12','manager','1/2',2160),('m34','manager','3/4',3240),('m11','manager','pelny',6400),('pr14','pracownik restauracji','1/4',880),('pr12','pracownik restauracji','1/2',1760),('pr34','pracownik restauracji','3/4',2640),('pr11','pracownik restauracji','pelny',3520),('i14','instruktor','1/4',960),('i12','instruktor','1/2',1920),('i34','instruktor','3/4',2880),('i11','instruktor','pelny',3840),('lg11','lider goscinnosci','pelny',4000),('mp11','manager ds. personalnych','pelny',4160);
+
+
+
+
+
